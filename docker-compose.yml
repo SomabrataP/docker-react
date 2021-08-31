@@ -1,32 +1,8 @@
 version: '3'
-
 services:
   web:
-    build: 
+    build:
       context: .
-      dockerfile: Dockerfile.dev
-    stdin_open: true
-    # environment:
-    #   - CHOKIDAR_USEPOLLING=true
-    ports: 
-      - "3000:3000"
-    volumes:
-      - /home/node/app/node_modules
-      - .:/home/node/app
-  tests:
-    build: 
-      context: .
-      dockerfile: Dockerfile.dev
-    stdin_open: true
-    volumes:
-      - /home/node/app/node_modules
-      - .:/home/node/app
-    command: ["npm", "run", "test"]
-
-
-networks:
-  default:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.16.57.0/24
+      dockerfile: Dockerfile
+    ports:
+      - '80:80'
